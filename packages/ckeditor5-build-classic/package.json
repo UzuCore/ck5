@@ -54,6 +54,7 @@
     "@ckeditor/ckeditor5-dev-translations": "^41.0.0",
     "@ckeditor/ckeditor5-dev-utils": "^41.0.0",
     "@ckeditor/ckeditor5-theme-lark": "42.0.2",
+    "rimraf": "^6.0.1",
     "terser-webpack-plugin": "^4.2.3",
     "typescript": "5.0.4",
     "webpack": "^5.58.1",
@@ -69,7 +70,8 @@
     "directory": "packages/ckeditor5-build-classic"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "postbuild": "tsc -p ./tsconfig.types.json"
+    "clean:build": "rimraf build/ckeditor5-build-classic build/ckeditor5-emojis build/src",
+    "build": "npm run clean:build && webpack --mode production",
+    "postbuild": "tsc -p ./tsconfig.types.json && rimraf build/ckeditor5-build-classic build/ckeditor5-emojis build/src"
   }
 }
