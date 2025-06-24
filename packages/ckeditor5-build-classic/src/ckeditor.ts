@@ -1,6 +1,6 @@
 import { ClassicEditor as ClassicEditorBase } from '@ckeditor/ckeditor5-editor-classic';
 
-// ✅ 기본 플러그인들
+// ✅ 기본 플러그인
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import {
@@ -25,15 +25,11 @@ import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
-import { FontFamily } from '@ckeditor/ckeditor5-font';
-import { FontSize } from '@ckeditor/ckeditor5-font';
-import { FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
+import { FontFamily, FontSize, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
 import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
-import { SpecialCharacters } from '@ckeditor/ckeditor5-special-characters';
-import { SpecialCharactersEssentials } from '@ckeditor/ckeditor5-special-characters';
+import { SpecialCharacters, SpecialCharactersEssentials } from '@ckeditor/ckeditor5-special-characters';
 
-// 💡 여기 ↓↓↓ 반드시 import로 선언!! (export NO!)
-// 플러그인 파일이 src/emojis/ 아래 있다고 가정
+// ✅ 이모지 플러그인 import (순서: alpha)
 import Emojis from './emojis/emojis';
 import EmojisActivities from './emojis/emojisactivities';
 import EmojisFlags from './emojis/emojisflags';
@@ -74,15 +70,16 @@ export default class ClassicEditor extends ClassicEditorBase {
         SourceEditing,
         SpecialCharacters,
         SpecialCharactersEssentials,
+        // 👇 이모지 플러그인
         Emojis,
-        EmojisPeople,
-        EmojisNature,
-        EmojisPlaces,
-        EmojisFood,
         EmojisActivities,
-        EmojisObjects,
-        EmojisSymbols,
         EmojisFlags,
+        EmojisFood,
+        EmojisNature,
+        EmojisObjects,
+        EmojisPeople,
+        EmojisPlaces,
+        EmojisSymbols,
     ];
 
     public static override defaultConfig: EditorConfig = {

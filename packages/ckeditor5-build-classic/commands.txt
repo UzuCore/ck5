@@ -1,0 +1,31 @@
+# [기본 빌드]
+npm install --legacy-peer-deps
+npm run build
+npm run postbuild
+
+# [의존성/캐시 완전 초기화 + 재설치]
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+
+# [peer deps 충돌 무시 설치]
+npm install --legacy-peer-deps
+
+# [수정 후 빠른 재빌드]
+npm run build
+npm run postbuild
+
+# [모든 잔여물 포함 완전 초기화 후 빌드]
+rm -rf node_modules package-lock.json build
+npm cache clean --force
+npm install
+npm run build
+npm run postbuild
+
+# [플러그인만 개별 빌드]
+cd packages/플러그인이름
+npm run build
+
+# [빌드 산출물, 로그파일 삭제]
+rm -rf build
+rm -rf *.log
